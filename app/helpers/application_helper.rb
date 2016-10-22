@@ -1,11 +1,9 @@
 module ApplicationHelper
 
   def twilio
-    account_sid = TWILIO_SID
-    auth_token = TWILIO_TOKEN
-    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
     @body = params["Body"]
-    @twilio_number = "14152752620"
+    @twilio_number = "14152752690"
     @from_number = params["From"]
   end
 

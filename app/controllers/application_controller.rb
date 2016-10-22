@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
+  # protect CSRF attacks by disabling the Rails authenticity token
+  # skip_before_action :verify_authenticity_token
+
+  include ApplicationHelper
 
   def index
   end
@@ -71,4 +75,5 @@ class ApplicationController < ActionController::Base
       erb :debug
     end
   end
+
 end
