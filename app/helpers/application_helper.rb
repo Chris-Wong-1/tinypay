@@ -1,7 +1,8 @@
 module ApplicationHelper
+  require 'twilio-ruby'
 
   def twilio
-    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+    @client = Twilio::REST::Client.new Rails.application.secrets.TWILIO_ACCOUNT_SID, Rails.application.secrets.TWILIO_AUTH_TOKEN #ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     @body = params["Body"]
     @twilio_number = "14152752690"
     @from_number = params["From"]
@@ -18,11 +19,11 @@ module ApplicationHelper
 
   def send_tiny_text
     twilio
-    @client.account.messages.create(
-      :from => @twilio_number,
-      :to => @from_number,
-      :body => "Welcome to TinyPay! To set up account, reply with 'Setup'.  To send money, enter a phone number and dollar amount, as 'Send 20.09 to 4155558551'. To change password code, reply with 'ChangePassword'. Reply 'STOP' to unsubscribe."
-      )
+    @client.account.messages.create {
+      from: @twilio_number,
+      to: @from_number,
+      body: "Welcome to TinyPay! To set up account, reply with 'Setup'.  To send money, enter a phone number and dollar amount, as 'Send 20.09 to 4155558551'. To change password code, reply with 'ChangePassword'. Reply 'STOP' to unsubscribe."
+    }.stringify
   end
 
   def send_setup_text
