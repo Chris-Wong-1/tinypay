@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transfer_reference: MyString
+  payment_type: MyString
+  funding_source0: MyString
+  funding_source1: MyString
+  amount: MyString
+  currency: MyString
+  sender_id: 1
+  receiver_id: 1
+  payment_origination_country: MyString
+  sanction_screening_override: MyString
+  statement_descriptor: MyString
+  channel: MyString
+  text: MyString
+  partnerId: MyString
+
+two:
+  transfer_reference: MyString
+  payment_type: MyString
+  funding_source0: MyString
+  funding_source1: MyString
+  amount: MyString
+  currency: MyString
+  sender_id: 1
+  receiver_id: 1
+  payment_origination_country: MyString
+  sanction_screening_override: MyString
+  statement_descriptor: MyString
+  channel: MyString
+  text: MyString
+  partnerId: MyString
