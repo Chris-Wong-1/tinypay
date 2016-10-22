@@ -1,1 +1,21 @@
-<h1>TinyPay</h1>
+<div class="container">
+  <h1>TinyPay</h1>
+  <p>Send all of your texts to +14152752690 to begin sending monies.</p>
+
+
+  <p>Test it out:</p>
+  <form action="/reply" method="post">
+    <label>Enter your phone number</label>
+    <input type="text" name="From">
+    <br>
+    <label>Send 'Tiny' to your phone</label>
+    <input type="text" name="Body">
+    <br>
+    <input type="submit" action="submit" name="Go!">
+  </form>
+
+
+  <% if @success %>
+    <%= @success %>
+  <% end %>
+</div>
