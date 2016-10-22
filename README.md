@@ -1,6 +1,6 @@
 # TinyPay
 
-Make mobile payments via SMS, implementing MASTERCARD and Twilio APIs.
+An application to make mobile payments via SMS using MASTERCARD API.
 
 ##Team
 Alexander Pellas - [@alexpadriac](https://github.com/alexpadriac)  <br>
