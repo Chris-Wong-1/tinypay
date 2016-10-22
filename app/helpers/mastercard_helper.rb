@@ -17,13 +17,13 @@ def main
     Config.setDebug(true) #gives detail on response
 
     mapObj = RequestMap.new
-    mapObj.set("payment_transfer.transfer_reference", "40023991848254111813006")
+    mapObj.set("payment_transfer.transfer_reference", "40023991848254111813106") #use rand gen to get unique for every request
     mapObj.set("payment_transfer.payment_type", "P2P")
     mapObj.set("payment_transfer.funding_source[0]", "CREDIT")
     mapObj.set("payment_transfer.funding_source[1]", "DEBIT")
     mapObj.set("payment_transfer.amount", "1800")
     mapObj.set("payment_transfer.currency", "USD")
-    mapObj.set("payment_transfer.sender_account_uri", "acct-ref:ref_20160407070850915")
+    mapObj.set("payment_transfer.sender_account_uri", "pan:5013040000000018;exp=2017-08;cvc=123")
     mapObj.set("payment_transfer.sender.first_name", "John")
     mapObj.set("payment_transfer.sender.middle_name", "Tyler")
     mapObj.set("payment_transfer.sender.last_name", "Jones")
@@ -53,13 +53,13 @@ def main
     mapObj.set("payment_transfer.recipient.email", "Jane.Smith123@abcmail.com")
     mapObj.set("payment_transfer.payment_origination_country", "USA")
     mapObj.set("payment_transfer.sanction_screening_override", " false ")
-    mapObj.set("payment_transfer.reconciliation_data.custom_field[0].name", "ABC")
-    mapObj.set("payment_transfer.reconciliation_data.custom_field[0].value", "123")
-    mapObj.set("payment_transfer.reconciliation_data.custom_field[1].name", "DEF")
-    mapObj.set("payment_transfer.reconciliation_data.custom_field[1].value", "456")
-    mapObj.set("payment_transfer.reconciliation_data.custom_field[2].name", "GHI")
-    mapObj.set("payment_transfer.reconciliation_data.custom_field[2].value", "789")
-    mapObj.set("payment_transfer.statement_descriptor", "TST*THANKYOU")
+    # mapObj.set("payment_transfer.reconciliation_data.custom_field[0].name", "ABC")
+    # mapObj.set("payment_transfer.reconciliation_data.custom_field[0].value", "123")
+    # mapObj.set("payment_transfer.reconciliation_data.custom_field[1].name", "DEF")
+    # mapObj.set("payment_transfer.reconciliation_data.custom_field[1].value", "456")
+    # mapObj.set("payment_transfer.reconciliation_data.custom_field[2].name", "GHI")
+    # mapObj.set("payment_transfer.reconciliation_data.custom_field[2].value", "789")
+    mapObj.set("payment_transfer.statement_descriptor", "P2P*THANKYOU")
     mapObj.set("payment_transfer.channel", "KIOSK")
     mapObj.set("payment_transfer.text", "funding_source")
     mapObj.set("partnerId", "ptnr_2370-10D6-ED32-C98E")
@@ -116,12 +116,12 @@ def main
     puts "transfer.transaction_history.data.transaction.status_timestamp-->#{response.get("transfer.transaction_history.data.transaction.status_timestamp")}" #transfer.transaction_history.data.transaction.status_timestamp-->2016-08-29T01:11:02-05:00
     puts "transfer.transaction_history.data.transaction.retrieval_reference-->#{response.get("transfer.transaction_history.data.transaction.retrieval_reference")}" #transfer.transaction_history.data.transaction.retrieval_reference-->624200192616
     puts "transfer.transaction_history.data.transaction.system_trace_audit_number-->#{response.get("transfer.transaction_history.data.transaction.system_trace_audit_number")}" #transfer.transaction_history.data.transaction.system_trace_audit_number-->926162
-    puts "transfer.reconciliation_data.custom_field[0].name-->#{response.get("transfer.reconciliation_data.custom_field[0].name")}" #transfer.reconciliation_data.custom_field[0].name-->ABC
-    puts "transfer.reconciliation_data.custom_field[0].value-->#{response.get("transfer.reconciliation_data.custom_field[0].value")}" #transfer.reconciliation_data.custom_field[0].value-->123
-    puts "transfer.reconciliation_data.custom_field[1].name-->#{response.get("transfer.reconciliation_data.custom_field[1].name")}" #transfer.reconciliation_data.custom_field[1].name-->DEF
-    puts "transfer.reconciliation_data.custom_field[1].value-->#{response.get("transfer.reconciliation_data.custom_field[1].value")}" #transfer.reconciliation_data.custom_field[1].value-->456
-    puts "transfer.reconciliation_data.custom_field[2].name-->#{response.get("transfer.reconciliation_data.custom_field[2].name")}" #transfer.reconciliation_data.custom_field[2].name-->GHI
-    puts "transfer.reconciliation_data.custom_field[2].value-->#{response.get("transfer.reconciliation_data.custom_field[2].value")}" #transfer.reconciliation_data.custom_field[2].value-->789
+    # puts "transfer.reconciliation_data.custom_field[0].name-->#{response.get("transfer.reconciliation_data.custom_field[0].name")}" #transfer.reconciliation_data.custom_field[0].name-->ABC
+    # puts "transfer.reconciliation_data.custom_field[0].value-->#{response.get("transfer.reconciliation_data.custom_field[0].value")}" #transfer.reconciliation_data.custom_field[0].value-->123
+    # puts "transfer.reconciliation_data.custom_field[1].name-->#{response.get("transfer.reconciliation_data.custom_field[1].name")}" #transfer.reconciliation_data.custom_field[1].name-->DEF
+    # puts "transfer.reconciliation_data.custom_field[1].value-->#{response.get("transfer.reconciliation_data.custom_field[1].value")}" #transfer.reconciliation_data.custom_field[1].value-->456
+    # puts "transfer.reconciliation_data.custom_field[2].name-->#{response.get("transfer.reconciliation_data.custom_field[2].name")}" #transfer.reconciliation_data.custom_field[2].name-->GHI
+    # puts "transfer.reconciliation_data.custom_field[2].value-->#{response.get("transfer.reconciliation_data.custom_field[2].value")}" #transfer.reconciliation_data.custom_field[2].value-->789
     puts "transfer.statement_descriptor-->#{response.get("transfer.statement_descriptor")}" #transfer.statement_descriptor-->TST*THANKYOU
     puts "transfer.channel-->#{response.get("transfer.channel")}" #transfer.channel-->KIOSK
     puts "transfer.status-->#{response.get("transfer.status")}" #transfer.status-->APPROVED
@@ -129,13 +129,13 @@ def main
 
 
     # This sample shows looping through transfer.reconciliation_data.custom_field
-    list = response.get("transfer.reconciliation_data.custom_field")
-    list.each_with_index do |item, index|
-        puts("index: #{index}")
-        puts("name: [#{ item["name"] }]")
-        puts("value: [#{ item["value"] }]")
-
-    end
+    # list = response.get("transfer.reconciliation_data.custom_field")
+    # list.each_with_index do |item, index|
+    #     puts("index: #{index}")
+    #     puts("name: [#{ item["name"] }]")
+    #     puts("value: [#{ item["value"] }]")
+    #
+    # end
 
 
 end
