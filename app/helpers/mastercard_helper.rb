@@ -6,14 +6,15 @@ include MasterCard::Core::Model
 include MasterCard::API::P2p
 
 def main
-    consumerKey = "your consumer key"   # You should copy this from "My Keys" on your project page e.g. UTfbhDCSeNYvJpLL5l028sWL9it739PYh6LU5lZja15xcRpY!fd209e6c579dc9d7be52da93d35ae6b6c167c174690b72fa
-    keyFile = "path to your .p12 private key file" # e.g. /Users/yourname/project/sandbox.p12 | C:\Users\yourname\project\sandbox.p12
-    keyAlias = "keyalias"   # For production: change this to the key alias you chose when you created your production key
-    keyPassword = "keystorepassword"   # For production: change this to the key alias you chose when you created your production key
+    consumerKey = "4FZDE2qryKsPPqA1NwXbbBku3bNHhHZrpZLowyMP6b729703!f435de5c8fe3425aacf9d3b1912611ca0000000000000000"   # You should copy this from "My Keys" on your project page e.g. UTfbhDCSeNYvJpLL5l028sWL9it739PYh6LU5lZja15xcRpY!fd209e6c579dc9d7be52da93d35ae6b6c167c174690b72fa
+    keyFile = "../../hackathonalias_sandbox.p12" # e.g. /Users/yourname/project/sandbox.p12 | C:\Users\yourname\project\sandbox.p12
+    keyAlias = "hackathonalias"   # For production: change this to the key alias you chose when you created your production key
+    keyPassword = "hackathon@123"   # For production: change this to the key alias you chose when you created your production key
     auth = OAuth::OAuthAuthentication.new(consumerKey, keyFile, keyAlias, keyPassword)
     Config.setAuthentication(auth)
 
     Config.setSandbox(true)   # For production: use Config.setSandbox(false)
+    Config.setDebug(true) #gives detail on response
 
     mapObj = RequestMap.new
     mapObj.set("payment_transfer.transfer_reference", "40023991848254111813006")
@@ -61,7 +62,7 @@ def main
     mapObj.set("payment_transfer.statement_descriptor", "TST*THANKYOU")
     mapObj.set("payment_transfer.channel", "KIOSK")
     mapObj.set("payment_transfer.text", "funding_source")
-    mapObj.set("partnerId", "ptnr_BEeCrYJHh2BXTXPy_PEtp-8DBOo")
+    mapObj.set("partnerId", "ptnr_2370-10D6-ED32-C98E")
 
     response = PaymentTransfer.create(mapObj)
     puts "transfer.id-->#{response.get("transfer.id")}" #transfer.id-->trn_4MMUC7147Vamd1IVt77DV0d-mIZr
