@@ -1,5 +1,7 @@
 # TinyPay
 
+![TinyPay](https://github.com/chris-wong-1/tinypay/tinypay.jpg "TinyPay")
+
 Simple, secure, and scalable - TinyPay uses SMS to bring the rest of the world into the 21st century of payments <br>
 
 A mobile payment platform for the estimated one and a half billion people on Earth that have cell phones, but no internet access. Using the Mastercard Send P2P and Twilio API's to instantly send payments worldwide with just a simple text message.
