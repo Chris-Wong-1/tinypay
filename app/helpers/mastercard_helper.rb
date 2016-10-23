@@ -9,7 +9,7 @@ module MastercardHelper
 
   def main
     consumerKey = "4FZDE2qryKsPPqA1NwXbbBku3bNHhHZrpZLowyMP6b729703!f435de5c8fe3425aacf9d3b1912611ca0000000000000000"   # You should copy this from "My Keys" on your project page e.g. UTfbhDCSeNYvJpLL5l028sWL9it739PYh6LU5lZja15xcRpY!fd209e6c579dc9d7be52da93d35ae6b6c167c174690b72fa
-    keyFile = "/Users/wong/Documents/tinypay/app/helpers/hackathonalias_sandbox.p12" # e.g. /Users/yourname/project/sandbox.p12 | C:\Users\yourname\project\sandbox.p12
+    keyFile = "/Users/justinwong/Documents/phase-4ever/tinypay/app/helpers/hackathonalias_sandbox.p12" # e.g. /Users/yourname/project/sandbox.p12 | C:\Users\yourname\project\sandbox.p12
     keyAlias = "hackathonalias"   # For production: change this to the key alias you chose when you created your production key
     keyPassword = "hackathon@123"   # For production: change this to the key alias you chose when you created your production key
     auth = OAuth::OAuthAuthentication.new(consumerKey, keyFile, keyAlias, keyPassword)
