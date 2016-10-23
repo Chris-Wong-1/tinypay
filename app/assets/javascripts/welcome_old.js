@@ -21,10 +21,10 @@ function showMastercardGif(){
       }
       setTimeout(verifyingSenderAndReciepient, 2000);
 
-      function verifiedSenderAndReciepient(){
-          $('.loader').html("<img src='https://d13yacurqjgara.cloudfront.net/users/799964/screenshots/3004653/5.1_cc_to_safe.gif' alt='verify'><br><p class='animatedText'>Verified Sender and Recipient</p>")
-      }
-      setTimeout(verifiedSenderAndReciepient, 4000);
+      // function verifiedSenderAndReciepient(){
+      //     $('.loader').html("<img src='https://d13yacurqjgara.cloudfront.net/users/799964/screenshots/3004653/5.1_cc_to_safe.gif' alt='verify'><br><p class='animatedText'>Verified Sender and Recipient</p>")
+      // }
+      // setTimeout(verifiedSenderAndReciepient, 4000);
 
 
       $(window).keypress(function(e) {
@@ -73,6 +73,8 @@ function showMastercardGif(){
                   $(window).keypress(function(e) {
                     if (e.which === 32) {
                       $('.loader').html("<img src='https://d13yacurqjgara.cloudfront.net/users/760333/screenshots/2123456/lipco.gif' alt='send'><br><br><p class='animatedText'>Payment Complete!</p>")
+                      // $('.loader').clear
+                      // loading();
                     }
                   });
 
