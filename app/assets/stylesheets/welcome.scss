@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#header{
+  // font-size: x-large;
+  font-size: 3em;
+}
+
+.animatedText{
+  font-size: 2em;
+}
 .ring1{
   width: 50px;
   height: 50px;
@@ -60,9 +68,22 @@
 
 
 
+
+.foo{
+    background-image : url('semi-trans.png');
+    z-index : 10;
+    position : relative;
+    top : 0;
+    left : 0;
+}
+
 body, html {
-	background: #d3d3d3;
-	overflow: hidden;
+  background-image: url('http://www.freepptbackgrounds.net/wp-content/uploads/2013/05/Grey-Background-Abstract-Design.jpg');
+	// background: #d3d3d3;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  overflow: hidden;
 	color: #333333;
 	text-align: center;
   font-family: 'Muli', sans-serif;
