@@ -68,7 +68,7 @@ class MessagesController < ApplicationController
   elsif body[0].match(/\d+/)
       # params["From"] && body[1] == User.find_by(phone: params["From"]).password
       # run the mastercard API
-
+      sleep(10)
       main
       send_sent_text
       @route = "Money successfully sent"
