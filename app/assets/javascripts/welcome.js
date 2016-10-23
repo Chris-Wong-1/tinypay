@@ -117,7 +117,7 @@ function verifyingUser(){
 function userVerified(){
   $(window).keypress(function(e) {
   if (e.which === 32) {
-    $('.loader').html("<img src='https://d13yacurqjgara.cloudfront.net/users/159981/screenshots/2345952/vcn.gif' alt='send'><br><p class='animatedText'>User verified.</p>")
+    $('.loader').html("<p class='animatedText'>User verified.</p><br><img src='https://d13yacurqjgara.cloudfront.net/users/159981/screenshots/2345952/vcn.gif' alt='send'>")
 
     processingPayment()
   }
@@ -127,14 +127,14 @@ function userVerified(){
 function processingPayment(){
   $(window).keypress(function(e) {
   if (e.which === 32) {
-    $('.loader').html("<img src='https://d13yacurqjgara.cloudfront.net/users/486050/screenshots/2832783/seamless-payments.gif' alt='send'><br><br><p class='animatedText'>Processing payment...</p>")
+    $('.loader').html("<p class='animatedText'>Sending payment...</p><br><img src='https://d13yacurqjgara.cloudfront.net/users/486050/screenshots/2832783/seamless-payments.gif' alt='send'>")
 
     paymentSuccess()
   }
 })
 }
 
-function processingPayment(){
+function paymentSuccess(){
   $(window).keypress(function(e) {
   if (e.which === 32) {
     $('.loader').html("<p class='animatedText'>Success! Payment Complete.</p><br><img src='https://d13yacurqjgara.cloudfront.net/users/760333/screenshots/2123456/lipco.gif' alt='send'><br>")
