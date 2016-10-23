@@ -1,6 +1,7 @@
 # TinyPay
 
-![TinyPay](https://github.com/chris-wong-1/tinypay/tinypay.jpg "TinyPay")
+![TinyPay](/tinypay.jpg)
+)
 
 Simple, secure, and scalable - TinyPay uses SMS to bring the rest of the world into the 21st century of payments <br>
 
