@@ -162,11 +162,14 @@ class MessagesController < ApplicationController
 
   def send_sent_text
     boot_twilio
-    @client.account.messages.create(
+    party = [@from_number, "3238048081"]
+    party.each do |x|
+      @client.account.messages.create(
       :from => @twilio_number,
-      :to => @from_number,
+      :to => x,
       :body => "Money sent.  $#{session[:payment][1]} has been sent to #{session[:payment][-1]}.  For security purposes, please delete this conversation."
       )
+    end
   end
 
   #     if body.match(/\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/)
