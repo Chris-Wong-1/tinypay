@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   #skip_before_filter :authenticate_user!, :only => "reply"
   include MastercardHelper
+  include MastercardSanctionHelper
 
   def reply
     # message_body = params["Body"]
@@ -55,7 +56,12 @@ class MessagesController < ApplicationController
       ##  needs database check of phone number
       #start sending money
       session[:payment] = body
-      send_password_text
+      sanction
+      # if sanction.response.get("sanction_screening.score") <= 20
+        send_password_text
+      # else
+      #   send_error_text
+      # end
     #   @route = "Start sending money"
     #   erb :debug
     # elsif csbody[0].match(/\D+/) && body[-1].match(/\d{5}/)
@@ -71,6 +77,7 @@ class MessagesController < ApplicationController
       sleep(10)
       main
       send_sent_text
+      session[:payment] = nil
       @route = "Money successfully sent"
       # erb :debug
     # elsif body[0].downcase == "changepassword"
@@ -80,6 +87,7 @@ class MessagesController < ApplicationController
       send_error_text
       session[:user] = nil
       session[:account] = nil
+      session[:payment] = nil
       @route = "Major General ERROR"
       # erb :debug
     end
