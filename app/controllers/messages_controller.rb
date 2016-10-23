@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
       # take the body of the text and set them into an array seperated by spaces or commas
     body = params["Body"].split(' ')
     csbody = params["Body"].split(', ')
-
+    p body
     if body[0].downcase == "tiny"
       # help message
       send_tiny_text
@@ -50,11 +50,12 @@ class MessagesController < ApplicationController
     #     @route = "Error creating account"
     #     erb :debug
     #   end
-    # elsif body[0] == "send".downcase #&& body[1].match(/\d+/) && body[-1].match(/\d{10}/)
-    #   # if text has word 'send' to start sending money
-    #   ##  needs database check of phone number
-    #   #start sending money
-    #   send_password_text
+  elsif body[0].downcase == "send" #&& body[1].match(/\d+/) && body[-1].match(/\d{10}/)
+      # if text has word 'send' to start sending money
+      ##  needs database check of phone number
+      #start sending money
+      session[:payment] = body
+      send_password_text
     #   @route = "Start sending money"
     #   erb :debug
     # elsif csbody[0].match(/\D+/) && body[-1].match(/\d{5}/)
@@ -64,9 +65,10 @@ class MessagesController < ApplicationController
     #   send_setup_password_text
     #   @route = "Billing complete.  Sent password text"
     #   erb :debug
-    elsif body[0].downcase == "send"
+  elsif body[0].match(/\d+/)
       # params["From"] && body[1] == User.find_by(phone: params["From"]).password
       # run the mastercard API
+
       main
       send_sent_text
       @route = "Money successfully sent"
@@ -154,7 +156,7 @@ class MessagesController < ApplicationController
     @client.account.messages.create(
       :from => @twilio_number,
       :to => @from_number,
-      :body => "To confirm money transfer of #{@body[1].to_s} to #{@body[0].to_s}, reply with your phone number and password."
+      :body => "To confirm money transfer of #{session[:payment][1].to_s} to #{session[:payment][-1].to_s}, reply with your password."
       )
   end
 
@@ -163,7 +165,7 @@ class MessagesController < ApplicationController
     @client.account.messages.create(
       :from => @twilio_number,
       :to => @from_number,
-      :body => "Money sent.  $#{@body[1]} has been sent to #{@body[0]}.  For security purposes, please delete this conversation."
+      :body => "Money sent.  $#{session[:payment][1]} has been sent to #{session[:payment][-1]}.  For security purposes, please delete this conversation."
       )
   end
 
